@@ -1,0 +1,19 @@
+[package]
+name = "file-transfer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+log = "*"
+wasm-logger = "*"
+console_error_panic_hook = "*"
+leptos = { git = "https://github.com/camas/leptos", branch = "hash-routing", features = [
+    "csr",
+    "nightly",
+] }
+leptos_router = { git = "https://github.com/camas/leptos", branch = "hash-routing", features = [
+    "csr",
+    "nightly",
+] }
+web-sys = { version = "*", features = ["Element", "HtmlElement", "Window"] }
+git-version = "*"
