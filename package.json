@@ -3,11 +3,5 @@
     "version": "1.0.0",
     "dependencies": {
         "peerjs": "^1.5.2"
-    },
-    "devDependencies": {
-        "esbuild": "^0.19.12"
-    },
-    "scripts": {
-        "bundle": "esbuild --bundle --minify --outfile=build/bundled.js src/script.js"
     }
 }

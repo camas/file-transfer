@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File Transfer</title>
+    <base data-trunk-public-url />
     <style>
         html,
         body {
@@ -25,11 +26,12 @@
     </style>
 
     <link data-trunk rel="scss" type="text/css" href="css/main.scss" />
-    <link data-trunk rel="copy-file" href="build/bundled.js" />
+    <link data-trunk rel="copy-file" href="droid-sans-mono.ttf" />
+    <link data-trunk rel="copy-file" href="node_modules/peerjs/dist/peerjs.min.js.map" />
 </head>
 
-
 <body>
+    <script data-trunk src="node_modules/peerjs/dist/peerjs.min.js"></script>
     <div id="loading-screen">Loading...</div>
 </body>
 

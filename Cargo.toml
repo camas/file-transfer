@@ -4,10 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-log = "*"
-wasm-logger = "*"
 console_error_panic_hook = "*"
+getrandom = { version = "*", features = ["js"] }
+git-version = "*"
+gloo-utils = { version = "*", features = ["serde"] }
+js-sys = "*"
 leptos = { git = "https://github.com/camas/leptos", branch = "hash-routing", features = [
+    "csr",
+    "nightly",
+] }
+leptos_meta = { git = "https://github.com/camas/leptos", branch = "hash-routing", features = [
     "csr",
     "nightly",
 ] }
@@ -15,5 +21,26 @@ leptos_router = { git = "https://github.com/camas/leptos", branch = "hash-routin
     "csr",
     "nightly",
 ] }
-web-sys = { version = "*", features = ["Element", "HtmlElement", "Window"] }
-git-version = "*"
+# leptos = { path = "../leptos/leptos", features = ["csr", "nightly"] }
+# leptos_meta = { path = "../leptos/meta", features = ["csr", "nightly"] }
+# leptos_router = { path = "../leptos/router", features = ["csr", "nightly"] }
+log = "*"
+rand = "*"
+serde = { version = "*", features = ["derive"] }
+thiserror = "*"
+tokio = { version = "*", features = ["macros", "rt", "sync"] }
+tokio-util = "*"
+uuid = { version = "*", features = ["js", "serde", "v4"] }
+wasm-bindgen = "*"
+wasm-logger = "*"
+web-sys = { version = "*", features = [
+    "Blob",
+    "Element",
+    "File",
+    "FileList",
+    "HtmlAnchorElement",
+    "HtmlElement",
+    "Storage",
+    "Url",
+    "Window",
+] }

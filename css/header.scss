@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.header-text {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.header-separator {
+    height: 2px;
+    width: 800px;
+    background-color: #555555;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}

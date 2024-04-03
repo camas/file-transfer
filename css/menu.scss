@@ -1,0 +1,21 @@
+.menu-container {
+    width: 100%;
+    // height: calc(100% - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    width: 800px;
+}
+
+.menu-hidden-file-input {
+    display: none;
+}
+
+.menu-separator {
+    height: 2px;
+    background-color: #333333;
+    width: 100%;
+}

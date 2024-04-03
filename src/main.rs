@@ -1,10 +1,16 @@
 use components::app::App;
 
 mod components;
+mod peerjs;
+mod utils;
 
 fn main() {
     console_error_panic_hook::set_once();
     wasm_logger::init(wasm_logger::Config::default());
+
+    tokio::runtime::Builder::new_current_thread()
+        .build()
+        .unwrap();
 
     remove_loading_div();
 

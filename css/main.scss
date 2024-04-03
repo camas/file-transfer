@@ -1,0 +1,12 @@
+@use "app";
+@use 'footer';
+@use 'header';
+@use 'menu';
+
+@font-face {
+    font-family: "Droid Sans Mono";
+    src: url("./droid-sans-mono.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: 100%;
+}
