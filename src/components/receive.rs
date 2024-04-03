@@ -12,7 +12,11 @@ use web_sys::{Blob, HtmlAnchorElement, Url};
 
 use crate::{
     components::{app::CONNECT_TIMEOUT, settings::Settings},
-    peerjs::{DataConnectionError, Peer, PeerError, PeerID},
+    peerjs::{
+        client::{Client, ClientError},
+        dataconnection::DataConnectionError,
+        peerid::PeerID,
+    },
     utils::timeout,
 };
 
@@ -28,7 +32,7 @@ struct Status {
 #[derive(Debug, thiserror::Error)]
 enum ReceiveFileError {
     #[error("Error while connecting to PeerJS: {0}")]
-    OpenPeerError(PeerError),
+    OpenPeerError(ClientError),
     #[error("Connecting to PeerJS server timed out")]
     OpenTimedOut,
     #[error("Error while opening data connection: {0}")]
@@ -103,7 +107,7 @@ async fn receive_file_inner(peer_id: PeerID) -> Result<(), ReceiveFileError> {
         .iter()
         .map(|server| server.to_js())
         .collect();
-    let mut client = Peer::new(PeerID::new_random_long_id(), servers);
+    let mut client = Client::new(PeerID::new_random_long_id(), servers);
 
     timeout(CONNECT_TIMEOUT, client.wait_for_open())
         .await

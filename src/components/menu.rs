@@ -6,7 +6,7 @@ use web_sys::{Event, MouseEvent};
 
 use crate::{
     components::{app::FileToSend, settings::SettingsEditor},
-    peerjs::PeerID,
+    peerjs::peerid::PeerID,
 };
 
 #[component]

@@ -11,7 +11,7 @@ use crate::{
         footer::Footer, header::Header, menu::Menu, receive::ReceiveFile, send::SendFile,
         settings::Settings,
     },
-    peerjs::PeerID,
+    peerjs::peerid::PeerID,
 };
 
 pub(crate) const CONNECT_TIMEOUT: Duration = Duration::from_secs(10);

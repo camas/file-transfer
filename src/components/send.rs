@@ -14,7 +14,11 @@ use crate::{
         app::{FileToSend, CONNECT_TIMEOUT},
         settings::Settings,
     },
-    peerjs::{DataConnection, DataConnectionError, Peer, PeerError, PeerID},
+    peerjs::{
+        client::{Client, ClientError},
+        dataconnection::{DataConnection, DataConnectionError},
+        peerid::PeerID,
+    },
     utils::timeout,
 };
 
@@ -33,11 +37,11 @@ struct Connection {
 #[derive(Debug, thiserror::Error)]
 enum ReceiveConnectionsError {
     #[error("Error while connecting to PeerJS: {0}")]
-    OpenError(PeerError),
+    OpenError(ClientError),
     #[error("PeerJS open timed out")]
     OpenTimedOut,
     #[error("Error while receiving connection: {0}")]
-    ReceiveConnectionError(PeerError),
+    ReceiveConnectionError(ClientError),
 }
 
 #[derive(Debug, thiserror::Error)]
@@ -147,7 +151,7 @@ async fn receive_connections_inner(
         .iter()
         .map(|server| server.to_js())
         .collect();
-    let mut client = Peer::new(client_id, servers);
+    let mut client = Client::new(client_id, servers);
 
     timeout(CONNECT_TIMEOUT, client.wait_for_open())
         .await
@@ -175,7 +179,7 @@ async fn send_file(
     let status = create_rw_signal("Accepting connection".to_string());
     let connection = Connection {
         id: Uuid::new_v4(),
-        peer_id: data_connection.peer(),
+        peer_id: data_connection.peer_id(),
         status,
     };
 
@@ -208,9 +212,12 @@ async fn send_file_inner(
 
     update_connection_status(
         status,
-        format!("Connection from {}. Sending file", data_connection.peer()),
+        format!(
+            "Connection from {}. Sending file",
+            data_connection.peer_id()
+        ),
     );
-    info!("Connection from {}", data_connection.peer());
+    info!("Connection from {}", data_connection.peer_id());
 
     data_connection.send_string(&file.name());
     data_connection.send(&file.slice().unwrap());
