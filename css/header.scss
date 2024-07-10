@@ -1,3 +1,5 @@
+@use 'theme';
+
 .header {
     display: flex;
     flex-direction: column;
@@ -14,7 +16,7 @@
 .header-separator {
     height: 2px;
     width: 800px;
-    background-color: #555555;
+    background-color: theme.$separator;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;

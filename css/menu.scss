@@ -1,3 +1,5 @@
+@use 'theme';
+
 .menu-container {
     width: 100%;
     // height: calc(100% - 60px);
@@ -8,14 +10,50 @@
 
 .menu {
     width: 800px;
+    display: grid;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: 100%;
+    row-gap: 12px;
 }
 
-.menu-hidden-file-input {
-    display: none;
+.menu-send {
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    background-color: #0d0d0d;
+    box-sizing: border-box;
+}
+
+.menu-send:hover {
+    background-color: #111111;
+}
+
+.menu-receive {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-receive-text {
+    width: 320px;
+}
+
+.menu-receive-input {
+    width: 100%;
 }
 
 .menu-separator {
     height: 2px;
-    background-color: #333333;
-    width: 100%;
+    background-color: theme.$separator;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-hidden-file-input {
+    display: none;
 }

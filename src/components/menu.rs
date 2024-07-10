@@ -41,7 +41,7 @@ pub(crate) fn Menu() -> impl IntoView {
         navigate_("/send", NavigateOptions::default());
     };
 
-    let receive_change = move |_| {
+    let on_receive_input_change = move |_| {
         let Some(peer_id_string) = receive_input_ref().map(|e| e.value()) else {
             error!("No input node ref");
             return;
@@ -63,10 +63,10 @@ pub(crate) fn Menu() -> impl IntoView {
             <Title text="Menu"/>
             <div class="menu">
                 <div>"Peer-to-peer file transfer. Select a file to send, or enter another user's code to receive. All data is sent encrypted thanks to WebRTC. Connections brokered via PeerJS's Cloud PeerServer."</div>
-                <div on:click=send_click>"Send file"</div>
-                <div>
-                    <div>"Receive from:"</div>
-                    <input type="text" on:change=receive_change node_ref=receive_input_ref></input>
+                <div class="menu-send" on:click=send_click>"Send file"</div>
+                <div class="menu-receive">
+                    <div class="menu-receive-text">"Receive from"</div>
+                    <input class="menu-receive-input" type="text" on:change=on_receive_input_change node_ref=receive_input_ref></input>
                 </div>
                 <div class="menu-separator"/>
                 <SettingsEditor/>
